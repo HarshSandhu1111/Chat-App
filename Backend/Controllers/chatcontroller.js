@@ -104,8 +104,8 @@ try{
 
 
 const RenameGroupChat = asynchandler(async(req,res)=>{
-    const chatId = req.body.chatId;
-    const newname = req.body.newname;
+    const {chatId,newname} = req.body;
+    
 
     try{
         const updatedChat = await chat.findOneAndUpdate({_id:chatId} ,{
