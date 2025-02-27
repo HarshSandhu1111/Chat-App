@@ -5,6 +5,8 @@ const connectDB = require("./config/db");
 const chat = require("./models/chatmodel");
 const userRoutes = require('./Routes/userRoutes');
 const chatRoutes = require('./Routes/chatRoutes');
+const messageRoutes = require('./Routes/messageRoutes');
+
 
 dotenv.config(); // Load environment variables
 const cors=  require("cors");
@@ -30,6 +32,7 @@ app.use(express.json());
 
 app.use('/api/user',userRoutes);
 app.use('/api/chat',chatRoutes);
+app.use('/api/message',messageRoutes);
 const PORT = process.env.PORT || 5000; 
 
 app.listen(PORT, () => {
