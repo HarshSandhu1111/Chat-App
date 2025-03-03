@@ -22,7 +22,7 @@ const sendmessage = async(req, res) => {
     try {
         var message = await Message.create(newmessage);
         message = await message.populate("sender", "name pic");
-        message = await message.populate("chat");
+        message = await message.populate("chat","-updatedAt");
 
         const updatedChat = await Chat.findByIdAndUpdate(
             chatId,
@@ -35,7 +35,7 @@ const sendmessage = async(req, res) => {
             populate: { path: "sender", select: "name pic" }
         });
         
-        res.json(updatedChat);
+          res.json(updatedChat);
         
     
 
