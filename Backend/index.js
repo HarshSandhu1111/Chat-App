@@ -71,7 +71,7 @@ io.on("connection", (socket) => {
 
   // ✅ Handle new messages and send them in real-time
   socket.on("new message", (newMessage) => {
-    console.log(`new message ${newMessage.latestMessage.content}`);
+    console.log(`new message ${newMessage.content}`);
     
     const chat = newMessage.users;
     console.log("chat",chat);
