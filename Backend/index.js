@@ -71,16 +71,16 @@ io.on("connection", (socket) => {
 
   // ✅ Handle new messages and send them in real-time
   socket.on("new message", (newMessage) => {
-    console.log(`new message ${newMessage.content}`);
+    console.log(`new message ${newMessage}`);
     
-    const chat = newMessage.users;
+    const chat = newMessage.chat.users;
     console.log("chat",chat);
     
     if (!chat) return console.error("Chat users not found!");
 
     chat.forEach((user) => {
-      if (user !== newMessage.latestMessage.sender?._id) {
-        socket.to(user).emit("message received", newMessage);
+      if (user !== newMessage.sender._id) {
+        socket.to(user._id).emit("message received", newMessage);
       }
     });
   });
